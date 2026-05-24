@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/keystatic/(.*)",
+      "destination": "/api/keystatic/$1"
+    },
+    {
+      "source": "/keystatic",
+      "destination": "/api/keystatic/keystatic"
+    }
+  ]
+}
