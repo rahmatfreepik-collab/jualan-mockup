@@ -1,75 +1,21 @@
 ---
-// 1. DATA MASTER PRODUK LENGKAP (Sinkron 100% dengan [id].astro & Menjaga Properti gumroadUrl)
-const mockups = [
-  { 
-    id: 'iphone', 
-    title: 'iPhone 17 Pro Mockup Pack', 
-    price: 49000, 
-    image: '/images/iphone.jpg',
-    category: 'Device',
-    features: ['Premium PSD File', 'Smart Object System', 'High Resolution 4K'],
-    gumroadUrl: 'https://eref16.gumroad.com/l/ybvoew',
-    description: `Mockup iPhone 17 Pro premium dengan sudut pandang presisi untuk memamerkan desain aplikasi UI/UX Anda. Dibuat dengan pencahayaan studio alami yang membuat aset Anda terlihat sangat realistis.
+import { getCollection } from 'astro:content';
 
-Fitur Utama & Keunggulan:
-• Resolusi tinggi (4K Ultra-HD) memastikan detail tajam bahkan saat di-zoom.
-• Lapisan bayangan (shadow) dan refleksi terpisah yang bisa diatur intensitasnya.
-• Sangat cocok untuk presentasi portfolio di Behance, Dribbble, atau ke klien langsung.
+// 1. DATA MASTER PRODUK SEKARANG DIAMBIL OTOMATIS DARI DASHBOARD CMS
+const dataDinamis = await getCollection('produk');
 
-Cara Penggunaan:
-1. Buka file .PSD yang sudah didownload di Adobe Photoshop.
-2. Cari layer bernama 'Put Your Design Here' lalu double-klik pada icon Smart Object.
-3. Tempel (paste) screenshot desain aplikasi Anda di tab baru yang muncul.
-4. Tekan Save (Cmd+S / Ctrl+S) dan tutup tab tersebut. Desain Anda otomatis terpasang!`
-  },
-  { 
-    id: 'macbook', 
-    title: 'MacBook Clay Mockup Studio', 
-    price: 79000, 
-    image: '/images/macbook.jpg',
-    category: 'Device',
-    features: ['Minimalist Clay Style', 'Changeable Colors', 'Multi-angle View'],
-    gumroadUrl: 'https://eref16.gumroad.com/l/ybvoew',
-    description: `Paket mockup MacBook dengan gaya minimalis "Clay". Anda bisa mengubah warna laptop sesuka hati hanya dengan beberapa klik di Photoshop. Sangat cocok untuk presentasi website modern.
+const mockups = dataDinamis.map(item => ({
+  id: item.id,
+  title: item.data.title,
+  price: item.data.price,
+  image: item.data.image || '/images/default.jpg',
+  category: item.data.category || 'Device',
+  gumroadUrl: item.data.gumroadUrl || 'https://eref16.gumroad.com/l/ybvoew',
+  features: item.data.features || ['Premium PSD File', 'Smart Object System'],
+  description: item.body || ''
+}));
 
-Fitur Utama & Keunggulan:
-• Desain perangkat clay yang bersih dan modern tidak mendistraksi desain web Anda.
-• Tersedia dalam berbagai sudut pandang (front view, isometric, dan perspective).
-• Warna sasis laptop dan latar belakang sepenuhnya dapat disesuaikan.`
-  },
-  { 
-    id: 'tshirt', 
-    title: 'Oversized T-Shirt Streetwear Mockup', 
-    price: 59000, 
-    image: '/images/tshirt.jpg', 
-    category: 'Apparel',
-    features: ['Realistic Fabric Texture', 'Displacement Map Included', 'Custom Tag & Label'],
-    gumroadUrl: 'https://eref16.gumroad.com/l/ybvoew',
-    description: `Mockup kaos oversized bergaya streetwear dengan tekstur kain katun yang sangat detail. Sudah dilengkapi dengan displacement map agar desain grafis Anda mengikuti lekukan lipatan kain secara natural.
-
-Fitur Utama & Keunggulan:
-• Tekstur kain berat (heavyweight cotton) yang realistis dengan drop shoulder cut.
-• Warna kaos, kerah, dan latar belakang bisa diubah secara terpisah.
-• Dilengkapi fitur smart object untuk bagian label leher.`
-  },
-  { 
-    id: 'pin-badge', 
-    title: 'Realistic Pin Badge Mockup', 
-    price: 39000, 
-    image: '/images/pin.jpg',
-    category: 'Accessories',
-    features: ['Realistic Texture', 'Easily Edit via Smart Object', 'Fully Customizable'],
-    gumroadUrl: 'https://eref16.gumroad.com/l/ybvoew',
-    description: `Tampilkan desain logo, ilustrasi, atau merchandise pin badge Anda dengan tekstur logam dan bayangan yang sangat detail. File ini sangat ringan namun memiliki resolusi ultra tinggi.
-
-Fitur Utama & Keunggulan:
-• Efek cetak timbul dan tekstur enamel gloss yang sangat realistis.
-• Pilihan material pin: Logam emas, perak, dan hitam doff.
-• File PSD yang terorganisir dengan baik dan mudah dipahami pemula.`
-  },
-];
-
-// 2. OPTIMASI SEO
+// 2. OPTIMASI SEO (Tetap utuh seperti milikmu)
 const seo = {
   title: "RAFALIO Studio | Premium PSD Mockups for Designers",
   description: "Download high-resolution premium PSD mockups with Smart Object features. Elevate your design portfolio and commercial projects instantly.",
@@ -422,5 +368,8 @@ const seo = {
             }
         });
     </script>
+<footer style="margin-top: 50px; text-align: center; color: #888;">
+  <p>Admin? <a href="/keystatic">Klik di sini untuk kelola produk</a></p>
+</footer>
 </body>
 </html>
