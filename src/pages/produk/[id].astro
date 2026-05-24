@@ -1,0 +1,127 @@
+---
+// 1. DAFTARKAN SEMUA RUTE ID PRODUK KE ASTRO
+export function getStaticPaths() {
+  return [
+    { params: { id: 'iphone' } },
+    { params: { id: 'macbook' } },
+    { params: { id: 'tshirt' } },
+    { params: { id: 'pin-badge' } },
+  ];
+}
+
+// 2. TANGKAP ID DARI URL (CONTOH: 'iphone')
+const { id } = Astro.params;
+
+// 3. DATA MASTER YANG SAMA PERSIS DENGAN INDEX.ASTRO
+const mockups = [
+  { 
+    id: 'iphone', 
+    title: 'iPhone 17 Pro Mockup Pack', 
+    price: 49000, 
+    image: '/images/iphone.jpg',
+    category: 'Device',
+    features: ['Premium PSD File', 'Smart Object System', 'High Resolution 4K'],
+    gumroadUrl: 'https://eref16.gumroad.com/l/ybvoew',
+    description: `Mockup iPhone 17 Pro premium dengan sudut pandang presisi untuk memamerkan desain aplikasi UI/UX Anda.`
+  },
+  { 
+    id: 'macbook', 
+    title: 'MacBook Clay Mockup Studio', 
+    price: 79000, 
+    image: '/images/macbook.jpg',
+    category: 'Device',
+    features: ['Minimalist Clay Style', 'Changeable Colors', 'Multi-angle View'],
+    gumroadUrl: 'https://eref16.gumroad.com/l/ybvoew',
+    description: `Paket mockup MacBook dengan gaya minimalis "Clay". Anda bisa mengubah warna laptop sesuka hati.`
+  },
+  { 
+    id: 'tshirt', 
+    title: 'Oversized T-Shirt Streetwear Mockup', 
+    price: 59000, 
+    image: '/images/tshirt.jpg', 
+    category: 'Apparel',
+    features: ['Realistic Fabric Texture', 'Displacement Map Included'],
+    gumroadUrl: 'https://eref16.gumroad.com/l/ybvoew',
+    description: `Mockup kaos oversized bergaya streetwear dengan tekstur kain katun yang sangat detail.`
+  },
+  { 
+    id: 'pin-badge', 
+    title: 'Realistic Pin Badge Mockup', 
+    price: 39000, 
+    image: '/images/pin.jpg',
+    category: 'Accessories',
+    features: ['Realistic Texture', 'Easily Edit via Smart Object'],
+    gumroadUrl: 'https://eref16.gumroad.com/l/ybvoew',
+    description: `Tampilkan desain logo, ilustrasi, atau merchandise pin badge Anda dengan tekstur logam.`
+  }
+];
+
+// 4. CARI DATA PRODUK YANG COCOK DENGAN URL
+const product = mockups.find((item) => item.id === id);
+
+// JIKA ID TIDAK DITEMUKAN, LEMPAR KE HALAMAN 44 UTUH
+if (!product) {
+  return Astro.redirect('/404');
+}
+---
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{product.title} | RAFALIO Studio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-[#fafafa] text-slate-900 font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-slate-100 py-4 px-8 flex justify-between items-center sticky top-0 z-50">
+        <a href="/" class="text-xl font-black tracking-wider text-slate-900">← KEMBALI</a>
+    </nav>
+
+    <!-- Konten Detail Produk -->
+    <main class="max-w-5xl mx-auto my-12 px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+        
+        <!-- Kolom Gambar -->
+        <div class="bg-white border border-slate-100 rounded-2xl overflow-hidden aspect-square shadow-sm">
+            <img src={product.image} alt={product.title} class="w-full h-full object-cover" />
+        </div>
+
+        <!-- Kolom Detail Deskripsi -->
+        <div class="flex flex-col justify-between">
+            <div>
+                <span class="text-xs bg-slate-100 text-slate-600 font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    {product.category}
+                </span>
+                <h1 class="text-3xl font-black text-slate-950 mt-4 leading-tight">{product.title}</h1>
+                <p class="text-2xl font-black text-indigo-600 mt-2">Rp {product.price.toLocaleString('id-ID')}</p>
+                
+                <div class="mt-6 border-t border-slate-100 pt-6">
+                    <h3 class="font-bold text-slate-900 mb-2">Deskripsi Produk:</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed whitespace-pre-line">{product.description}</p>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="font-bold text-slate-900 mb-2">Fitur Utama:</h3>
+                    <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+                        {product.features.map((feature) => <li>{feature}</li>)}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tombol Beli Langsung (Gumroad) -->
+            <a 
+                href={product.gumroadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-8 block text-center w-full bg-slate-900 hover:bg-indigo-600 text-white font-black py-4 rounded-xl text-base transition duration-150 shadow-sm"
+            >
+                Beli Produk Sekarang VIA GUMROAD
+            </a>
+        </div>
+
+    </main>
+
+</body>
+</html>

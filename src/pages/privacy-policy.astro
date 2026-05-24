@@ -1,0 +1,124 @@
+---
+// OPTIMASI SEO: Meta tags khusus untuk halaman Kebijakan Privasi
+const seo = {
+  title: "Privacy Policy | RAFALIO Studio",
+  description: "Kebijakan Privasi RAFALIO Studio. Pelajari bagaimana kami mengumpulkan, menggunakan, dan melindungi data pribadi Anda dengan aman.",
+  siteUrl: "https://rafalio.studio/privacy-policy"
+};
+---
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description}>
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href={seo.siteUrl}>
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-[#fafafa] text-slate-900 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+    <nav class="bg-white border-b border-slate-100 sticky top-0 z-50">
+        <div class="flex items-center justify-between px-4 lg:px-8 py-3.5 max-w-7xl mx-auto">
+            <a href="/" class="text-xl font-black tracking-tighter text-slate-900">
+                RAFALIO<span class="text-indigo-600">.</span>
+            </a>
+            <a href="/" class="text-sm font-bold text-indigo-600 hover:text-indigo-700 transition-colors flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+                Kembali ke Katalog
+            </a>
+        </div>
+    </nav>
+
+    <header class="max-w-4xl mx-auto text-center py-16 px-6 sm:py-20">
+        <span class="inline-flex items-center gap-1.5 bg-indigo-50 text-indigo-600 text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-4">
+            Legal & Privacy
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-slate-950 lh-tight">
+            Kebijakan Privasi
+        </h1>
+        <p class="mt-4 text-slate-500 text-base max-w-2xl mx-auto leading-relaxed">
+            Di RAFALIO Studio, kami sangat menjaga keamanan privasi Anda. Halaman ini menjelaskan bagaimana informasi pribadi Anda dikumpulkan, digunakan, dan dilindungi.
+        </p>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pb-32">
+        <div class="bg-white border border-slate-100 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] p-6 sm:p-10 space-y-10 text-sm text-slate-600 leading-relaxed">
+            
+            <section class="space-y-3">
+                <h2 class="text-lg font-black text-slate-950 tracking-tight flex items-center gap-2">
+                    <span class="w-1.5 h-5 bg-indigo-600 rounded-full block"></span>
+                    1. Informasi yang Kami Kumpulkan
+                </h2>
+                <p>
+                    Kami mengumpulkan beberapa informasi dasar saat Anda melakukan transaksi atau berinteraksi dengan situs kami, antara lain:
+                </p>
+                <ul class="list-disc list-inside space-y-1.5 pl-2 text-slate-700">
+                    <li><strong>Informasi Kontak:</strong> Nama lengkap dan alamat email (untuk mengirimkan file mockup dan nota pembelian).</li>
+                    <li><strong>Data Transaksi:</strong> Informasi pembayaran yang diproses secara aman melalui *payment gateway* pihak ketiga (kami tidak menyimpan data kartu kredit atau akun bank Anda).</li>
+                    <li><strong>Data Teknis:</strong> Alamat IP, jenis browser, dan aktivitas penjelajahan melalui *cookies* untuk optimasi performa website.</li>
+                </ul>
+            </section>
+
+            <section class="space-y-3">
+                <h2 class="text-lg font-black text-slate-950 tracking-tight flex items-center gap-2">
+                    <span class="w-1.5 h-5 bg-indigo-600 rounded-full block"></span>
+                    2. Bagaimana Kami Menggunakan Data Anda
+                </h2>
+                <p>Informasi yang Anda berikan digunakan secara terbatas untuk kepentingan operasional berikut:</p>
+                <ul class="list-disc list-inside space-y-1.5 pl-2 text-slate-700">
+                    <li>Memproses pesanan dan mengirimkan link unduhan file PSD produk ke email Anda.</li>
+                    <li>Memberikan layanan bantuan jika Anda mengalami kendala teknis pada file mockup.</li>
+                    <li>Mengirimkan informasi pembaruan produk (*update* versi mockup) jika ada perbaikan file di kemudian hari.</li>
+                </ul>
+            </section>
+
+            <section class="space-y-3">
+                <h2 class="text-lg font-black text-slate-950 tracking-tight flex items-center gap-2">
+                    <span class="w-1.5 h-5 bg-indigo-600 rounded-full block"></span>
+                    3. Perlindungan & Keamanan Data
+                </h2>
+                <p>
+                    Kami menerapkan standar keamanan enkripsi digital untuk melindungi data Anda dari akses yang tidak sah. RAFALIO Studio <strong>tidak akan pernah menjual, menyewakan, atau membagikan</strong> informasi pribadi Anda kepada pihak ketiga mana pun untuk kepentingan promosi mereka.
+                </p>
+            </section>
+
+            <section class="space-y-3">
+                <h2 class="text-lg font-black text-slate-950 tracking-tight flex items-center gap-2">
+                    <span class="w-1.5 h-5 bg-indigo-600 rounded-full block"></span>
+                    4. Layanan Pihak Ketiga (Cookies)
+                </h2>
+                <p>
+                    Situs kami menggunakan layanan analisis (seperti Google Analytics) untuk memantau trafik pengunjung secara global. Layanan ini menggunakan *cookies* untuk mengumpulkan data statistik anonim guna membantu kami mendesain pengalaman antarmuka (*UI/UX*) situs yang lebih baik di masa depan.
+                </p>
+            </section>
+
+            <section class="space-y-3 border-t border-slate-100 pt-8">
+                <h2 class="text-lg font-black text-slate-950 tracking-tight flex items-center gap-2">
+                    <span class="w-1.5 h-5 bg-indigo-600 rounded-full block"></span>
+                    5. Kontak Kami
+                </h2>
+                <p>
+                    Jika Anda memiliki pertanyaan mengenai Kebijakan Privasi ini atau ingin mengajukan penghapusan data kontak Anda dari sistem kami, silakan hubungi tim administrasi kami melalui email di <span class="text-indigo-600 font-semibold">support@rafalio.studio</span>.
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-100 py-12 text-center text-sm text-slate-400">
+        <div class="max-w-7xl mx-auto px-6 space-y-2">
+            <p class="font-black tracking-tight text-slate-800">RAFALIO STUDIO</p>
+            <p class="text-xs">&copy; 2026 RAFALIO Studio. Hak Cipta Dilindungi Undang-Undang.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,426 @@
+---
+// 1. DATA MASTER PRODUK LENGKAP (Sinkron 100% dengan [id].astro & Menjaga Properti gumroadUrl)
+const mockups = [
+  { 
+    id: 'iphone', 
+    title: 'iPhone 17 Pro Mockup Pack', 
+    price: 49000, 
+    image: '/images/iphone.jpg',
+    category: 'Device',
+    features: ['Premium PSD File', 'Smart Object System', 'High Resolution 4K'],
+    gumroadUrl: 'https://eref16.gumroad.com/l/ybvoew',
+    description: `Mockup iPhone 17 Pro premium dengan sudut pandang presisi untuk memamerkan desain aplikasi UI/UX Anda. Dibuat dengan pencahayaan studio alami yang membuat aset Anda terlihat sangat realistis.
+
+Fitur Utama & Keunggulan:
+• Resolusi tinggi (4K Ultra-HD) memastikan detail tajam bahkan saat di-zoom.
+• Lapisan bayangan (shadow) dan refleksi terpisah yang bisa diatur intensitasnya.
+• Sangat cocok untuk presentasi portfolio di Behance, Dribbble, atau ke klien langsung.
+
+Cara Penggunaan:
+1. Buka file .PSD yang sudah didownload di Adobe Photoshop.
+2. Cari layer bernama 'Put Your Design Here' lalu double-klik pada icon Smart Object.
+3. Tempel (paste) screenshot desain aplikasi Anda di tab baru yang muncul.
+4. Tekan Save (Cmd+S / Ctrl+S) dan tutup tab tersebut. Desain Anda otomatis terpasang!`
+  },
+  { 
+    id: 'macbook', 
+    title: 'MacBook Clay Mockup Studio', 
+    price: 79000, 
+    image: '/images/macbook.jpg',
+    category: 'Device',
+    features: ['Minimalist Clay Style', 'Changeable Colors', 'Multi-angle View'],
+    gumroadUrl: 'https://eref16.gumroad.com/l/ybvoew',
+    description: `Paket mockup MacBook dengan gaya minimalis "Clay". Anda bisa mengubah warna laptop sesuka hati hanya dengan beberapa klik di Photoshop. Sangat cocok untuk presentasi website modern.
+
+Fitur Utama & Keunggulan:
+• Desain perangkat clay yang bersih dan modern tidak mendistraksi desain web Anda.
+• Tersedia dalam berbagai sudut pandang (front view, isometric, dan perspective).
+• Warna sasis laptop dan latar belakang sepenuhnya dapat disesuaikan.`
+  },
+  { 
+    id: 'tshirt', 
+    title: 'Oversized T-Shirt Streetwear Mockup', 
+    price: 59000, 
+    image: '/images/tshirt.jpg', 
+    category: 'Apparel',
+    features: ['Realistic Fabric Texture', 'Displacement Map Included', 'Custom Tag & Label'],
+    gumroadUrl: 'https://eref16.gumroad.com/l/ybvoew',
+    description: `Mockup kaos oversized bergaya streetwear dengan tekstur kain katun yang sangat detail. Sudah dilengkapi dengan displacement map agar desain grafis Anda mengikuti lekukan lipatan kain secara natural.
+
+Fitur Utama & Keunggulan:
+• Tekstur kain berat (heavyweight cotton) yang realistis dengan drop shoulder cut.
+• Warna kaos, kerah, dan latar belakang bisa diubah secara terpisah.
+• Dilengkapi fitur smart object untuk bagian label leher.`
+  },
+  { 
+    id: 'pin-badge', 
+    title: 'Realistic Pin Badge Mockup', 
+    price: 39000, 
+    image: '/images/pin.jpg',
+    category: 'Accessories',
+    features: ['Realistic Texture', 'Easily Edit via Smart Object', 'Fully Customizable'],
+    gumroadUrl: 'https://eref16.gumroad.com/l/ybvoew',
+    description: `Tampilkan desain logo, ilustrasi, atau merchandise pin badge Anda dengan tekstur logam dan bayangan yang sangat detail. File ini sangat ringan namun memiliki resolusi ultra tinggi.
+
+Fitur Utama & Keunggulan:
+• Efek cetak timbul dan tekstur enamel gloss yang sangat realistis.
+• Pilihan material pin: Logam emas, perak, dan hitam doff.
+• File PSD yang terorganisir dengan baik dan mudah dipahami pemula.`
+  },
+];
+
+// 2. OPTIMASI SEO
+const seo = {
+  title: "RAFALIO Studio | Premium PSD Mockups for Designers",
+  description: "Download high-resolution premium PSD mockups with Smart Object features. Elevate your design portfolio and commercial projects instantly.",
+  keywords: "psd mockup, premium mockup, iphone mockup, tshirt mockup, apparel mockup, rafalio studio",
+  siteUrl: "https://rafalio.studio"
+};
+---
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description}>
+    <meta name="keywords" content={seo.keywords}>
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href={seo.siteUrl}>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content={seo.title}>
+    <meta property="og:description" content={seo.description}>
+    <meta property="og:url" content={seo.siteUrl}>
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<style type="text/theme">
+  @theme {
+    --v4-dark-mode: selector(.dark);
+  }
+</style>
+<style>
+  html.dark body {
+    background-color: #020617 !important;
+    color: #f8fafc !important;
+  }
+  html.dark nav, html.dark footer {
+    background-color: #0f172a !important;
+    border-color: #1e293b !important;
+  }
+  html.dark .mockup-card {
+    background-color: #0f172a !important;
+    border-color: #1e293b !important;
+  }
+  html.dark h1, html.dark h2, html.dark h3, html.dark a {
+    color: #ffffff !important;
+  }
+</style>
+</head>
+<body class="bg-[#fafafa] text-slate-900 dark:bg-slate-950 dark:text-slate-50 font-sans antialiased selection:bg-indigo-500 selection:text-white transition-colors duration-200">
+
+    <nav class="bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 sticky top-0 z-50 transition-colors duration-200">
+        <div class="flex items-center justify-between px-4 lg:px-8 py-3.5 gap-4">
+            
+            <div class="flex items-center gap-8">
+                <a href="/" class="text-xl font-black tracking-tighter text-slate-900 dark:text-white shrink-0">
+                    RAFALIO<span class="text-indigo-600">.</span>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-6 text-[14px] font-medium text-slate-600 dark:text-slate-300 shrink-0 h-9">
+                    <div class="relative flex items-center gap-1 hover:text-indigo-600 transition-colors cursor-pointer group h-full">
+                        <span>Category</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3 h-3 text-slate-400 group-hover:text-indigo-600 group-hover:rotate-180 transition-all duration-200">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+
+                        <div class="absolute left-0 top-full mt-1 w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50 overflow-hidden py-1.5">
+                            <a href="#koleksi" class="block px-4 py-2 text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700 hover:text-indigo-600 dark:hover:text-white transition-colors text-sm">Device</a>
+                            <a href="#koleksi" class="block px-4 py-2 text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700 hover:text-indigo-600 dark:hover:text-white transition-colors text-sm">Apparel</a>
+                            <a href="#koleksi" class="block px-4 py-2 text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-700 hover:text-indigo-600 dark:hover:text-white transition-colors text-sm">Accessories</a>
+                        </div>
+                    </div>
+                    <a href="/lisensi" class="hover:text-indigo-600 transition-colors">Lisensi</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 shrink-0">
+                <button id="dark-mode-toggle" class="p-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-slate-800 dark:text-slate-200 transition-colors cursor-pointer" aria-label="Toggle Dark Mode">
+                    <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                    </svg>
+                </button>
+                <div class="w-9 h-9 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-600 cursor-pointer">
+                    RF
+                </div>
+            </div>
+        </div>
+
+        <div class="px-4 lg:px-8 pb-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex items-center bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full shadow-sm hover:border-slate-300 dark:hover:border-slate-600 focus-within:border-indigo-600 focus-within:ring-2 focus-within:ring-indigo-100 dark:focus-within:ring-indigo-950 transition-all overflow-hidden h-12 px-5">
+                    <form action="#" class="flex-grow flex items-center h-full gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-slate-400 shrink-0">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.604 10.604Z" />
+                        </svg>
+                        <input 
+                            id="search-input"
+                            type="text" 
+                            placeholder="Cari mockup produk di sini..." 
+                            class="w-full bg-transparent text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none h-full"
+                        />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="max-w-5xl mx-auto text-center py-24 px-6 sm:py-32">
+        <span class="inline-flex items-center gap-1.5 bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400 animate-pulse"></span>
+            Premium Digital Assets
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-slate-950 dark:text-white leading-[1.1] max-w-4xl mx-auto">
+            Presentasikan Desainmu <br class="hidden sm:inline"/> Ke Level Maksimal.
+        </h1>
+    </header>
+
+    <main id="koleksi" class="max-w-7xl mx-auto px-6 pb-32 scroll-mt-44">
+        
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12 gap-4 border-b border-slate-100 dark:border-slate-800 pb-6">
+            <div>
+                <h2 class="text-2xl font-black text-slate-950 dark:text-white tracking-tight">Koleksi Mockup Terbaru</h2>
+                <p class="text-sm text-slate-400 mt-1">File PSD siap pakai dengan kualitas studio foto.</p>
+            </div>
+            <div>
+                <span id="product-count" class="text-xs font-bold text-slate-400 uppercase tracking-widest bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg whitespace-nowrap">
+                   {mockups.length} Produk Tersedia
+                </span>
+            </div>
+        </div>
+
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+    {mockups.map((item) => (
+        <div data-title={item.title.toLowerCase()} data-category={item.category.toLowerCase()} class="mockup-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_10px_30px_rgba(0,0,0,0.4)] transition-all duration-300 group flex flex-col h-full p-5">
+            
+            <a href={`/produk/${item.id}`} class="overflow-hidden bg-slate-50 dark:bg-slate-800 relative aspect-[4/3] rounded-xl mb-4 block">
+                <span class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm text-slate-800 dark:text-slate-200 text-[11px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-md z-10 shadow-sm border border-slate-100 dark:border-slate-800">
+                    {item.category}
+                </span>
+                <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    loading="lazy" 
+                    class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ease-out" 
+                />
+            </a>
+            
+            <div class="flex-grow">
+                <h3 class="font-extrabold text-lg text-slate-950 dark:text-white line-clamp-1 transition-colors duration-200 hover:text-indigo-600 dark:hover:text-indigo-400">
+                    <a href={`/produk/${item.id}`} class="block w-full">
+                        {item.title}
+                    </a>
+                </h3>
+                <p class="text-xs text-slate-400 mt-1">High-Res PSD • Smart Object</p>
+            </div>
+                
+            <div class="mt-6 pt-4 border-t border-slate-50 dark:border-slate-800 flex items-center justify-between gap-2">
+                <div>
+                    <span class="text-[10px] text-slate-400 uppercase tracking-wider font-bold block">Harga</span>
+                    <span class="text-indigo-600 dark:text-indigo-400 font-black text-xl tracking-tight">
+                        Rp {item.price.toLocaleString('id-ID')}
+                    </span>
+                </div>
+                
+                <div class="flex gap-1.5 shrink-0">
+                    <button 
+                        data-checkout-url={item.gumroadUrl} 
+                        class="btn-beli-mockup bg-slate-950 dark:bg-slate-800 hover:bg-indigo-600 dark:hover:bg-indigo-600 text-white font-bold text-xs px-5 py-3 rounded-xl transition-colors duration-200 text-center block shadow-sm cursor-pointer"
+                    >
+                        Beli Sekarang
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    ))}
+</div>
+    </main>
+
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 py-12 text-center text-sm text-slate-400 transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-6 space-y-4">
+            <p class="font-black tracking-tight text-slate-800 dark:text-white text-base">RAFALIO STUDIO</p>
+            <p class="text-xs">&copy; 2026 RAFALIO Studio. All rights reserved.</p>
+            <div class="flex justify-center gap-4 text-xs mt-2">
+                <a href="/lisensi" class="hover:text-slate-600 transition-colors">Lisensi</a>
+                <span class="text-slate-200">•</span>
+                <a href="/privacy-policy" class="hover:text-slate-600 transition-colors">Kebijakan Privasi</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="gumroad-modal" class="fixed inset-0 z-100 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-xl h-[85vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col relative">
+            <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">🔒 Secure Checkout via Gumroad</span>
+                <button id="tutup-modal" class="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div id="modal-loader" class="absolute inset-0 top-12 bg-white dark:bg-slate-900 flex items-center justify-center z-10">
+                <div class="w-8 h-8 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+            <iframe id="gumroad-iframe" src="" class="w-full flex-grow border-0"></iframe>
+        </div>
+    </div>
+
+    <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('search-input');
+            const searchForm = searchInput ? searchInput.closest('form') : null;
+            const mockupCards = document.querySelectorAll('.mockup-card');
+            const targetSection = document.getElementById('koleksi');
+            const productCountEl = document.getElementById('product-count');
+
+            // FUNGSI FILTER SEARCH & KATEGORI
+            function filterProducts(keyword, isCategory = false) {
+                const cleanKeyword = keyword.toLowerCase().trim();
+                let visibleCount = 0;
+                
+                mockupCards.forEach((card) => {
+                    const title = card.getAttribute('data-title') || '';
+                    const category = card.getAttribute('data-category') || '';
+                    let isMatch = false;
+
+                    if (cleanKeyword === 'all' || cleanKeyword === '') {
+                        isMatch = true;
+                    } else if (isCategory) {
+                        isMatch = (category === cleanKeyword);
+                    } else {
+                        isMatch = title.includes(cleanKeyword);
+                    }
+
+                    if (isMatch) {
+                        card.style.setProperty('display', 'flex', 'important');
+                        visibleCount++;
+                    } else {
+                        card.style.setProperty('display', 'none', 'important');
+                    }
+                });
+
+                if (productCountEl) {
+                    if (cleanKeyword === '' || cleanKeyword === 'all') {
+                        productCountEl.textContent = `${visibleCount} Produk Tersedia`;
+                    } else {
+                        productCountEl.textContent = `${visibleCount} Produk Ditemukan`;
+                    }
+                }
+            }
+
+            function scrollToKatalog() {
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    filterProducts(e.target.value, false);
+                });
+            }
+
+            if (searchForm) {
+                searchForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (searchInput) {
+                        filterProducts(searchInput.value, false);
+                        scrollToKatalog();
+                    }
+                });
+            }
+
+            const categoryLinks = document.querySelectorAll('nav .absolute a');
+            categoryLinks.forEach((link) => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const categoryName = e.target.textContent.trim().toLowerCase();
+                    filterProducts(categoryName, true);
+                    scrollToKatalog();
+                    if (searchInput) {
+                        searchInput.value = e.target.textContent.trim();
+                    }
+                });
+            });
+
+            // OVERLAY MODAL KASIR
+            const modal = document.getElementById('gumroad-modal');
+            const iframe = document.getElementById('gumroad-iframe');
+            const loader = document.getElementById('modal-loader');
+            const btnTutup = document.getElementById('tutup-modal');
+            const tombolBeli = document.querySelectorAll('.btn-beli-mockup');
+
+            tombolBeli.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const urlTujuan = btn.getAttribute('data-checkout-url');
+                    if (urlTujuan && modal && iframe && loader) {
+                        loader.style.display = 'flex';
+                        modal.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden'; 
+                        iframe.src = urlTujuan;
+                        iframe.onload = () => { loader.style.display = 'none'; };
+                    }
+                });
+            });
+
+            function tutupJendelaModal() {
+                if (modal && iframe) {
+                    modal.classList.add('hidden');
+                    iframe.src = ''; 
+                    document.body.style.overflow = ''; 
+                }
+            }
+
+            if (btnTutup) btnTutup.addEventListener('click', tutupJendelaModal);
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) tutupJendelaModal();
+                });
+            }
+
+            // KONTROL DARK MODE
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const htmlElement = document.documentElement;
+
+            const moonSvg = `<path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />`;
+            const sunSvg = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21M4.22 4.22l1.59 1.59m12.38 12.38l1.59 1.59M3 12h2.25m13.5 0H21M5.81 18.19l-1.59 1.59m12.38-12.38l1.59-1.59M12 7.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9z" />`;
+
+            if (localStorage.getItem('theme') === 'dark') {
+                htmlElement.classList.add('dark');
+                if (themeIcon) themeIcon.innerHTML = sunSvg;
+            }
+
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    if (htmlElement.classList.contains('dark')) {
+                        htmlElement.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                        if (themeIcon) themeIcon.innerHTML = moonSvg;
+                    } else {
+                        htmlElement.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                        if (themeIcon) themeIcon.innerHTML = sunSvg;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
